@@ -1,11 +1,11 @@
-import os
 from pathlib import Path
+import os
 
 # Define BASE_DIR
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Generate your secret key and place it here
-SECRET_KEY = 'your_generated_secret_key_here'
+SECRET_KEY = 'your_generated_secret_key_here' #this is a key
 
 # Set debug to False in production
 DEBUG = True
