@@ -1,0 +1,15 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <h1>Asset Profile</h1>
+  <a href="{% url 'edit_asset' asset.pk %}">Edit</a> <a href="{% url 'delete_asset' asset.pk %}">Delete</a>
+  <p>License Plate: {{ asset.license_plate }} </p>
+  <p>VIN: {{ asset.vin }} </p>
+  <p>Year: {{ asset.year }} </p>
+  <p>Make: {{ asset.make }} </p>
+  <p>Model: {{ asset.model }} </p>
+  <p>Max Weight Capacity: {{ asset.max_weight_capacity }} </p>
+  <p>GPS Data: {{ asset.gps_data }}</p>
+  <p>Length: {{ asset.length }} </p>
+  <a href="{% url 'dashboard' %}">Back to Dashboard</a>
+{% endblock %}

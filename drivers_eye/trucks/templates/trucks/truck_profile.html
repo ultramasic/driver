@@ -1,0 +1,24 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <h1>Truck Profile</h1>
+  <a href="{% url 'edit_truck' truck.pk %}">Edit</a> <a href="{% url 'delete_truck' truck.pk %}">Delete</a>
+  <p>License Plate: {{ truck.license_plate }} </p>
+  <p>VIN: {{ truck.vin }} </p>
+  <p>Year: {{ truck.year }} </p>
+  <p>Make: {{ truck.make }} </p>
+  <p>Model: {{ truck.model }} </p>
+  <p>Fuel Type: {{ truck.fuel_type }} </p>
+  <p>Mileage: {{ truck.mileage }} </p>
+  <p>Fuel Tank Capacity: {{ truck.fuel_tank_capacity }} </p>
+  <p>Last Trip: {{ truck.last_trip }}</p>
+  <p>OBDII Fault Codes: {{ truck.obdii_fault_codes }}</p>
+  <p>Fuel Level: {{ truck.fuel_level }}</p>
+  <p>Speed: {{ truck.speed }}</p>
+  <p>RPM: {{ truck.rpm }}</p>
+  <p>Engine Temperature: {{ truck.engine_temperature }}</p>
+  <p>Engine Load: {{ truck.engine_load }}</p>
+  <p>Live Fuel Usage: {{ truck.live_fuel_usage }}</p>
+  <p>GPS Data: {{ truck.gps_data }}</p>
+  <a href="{% url 'dashboard' %}">Back to Dashboard</a>
+{% endblock %}

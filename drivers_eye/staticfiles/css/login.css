@@ -1,0 +1,106 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--Grey-3, #F6F6F6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    width: 1440px;
+    height: 1024px;
+}
+
+.left-section {
+    background-color: #ffffff;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.right-section img {
+    width: 100%;
+    height: auto;
+}
+
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 6.199px;;
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #333333;
+}
+
+.input-group {
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #666666;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.login-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.login-button:hover {
+    background-color: #0056b3;
+}
+
+.links {
+    margin-top: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+.links a {
+    color: #007bff;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.links a img {
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.links a:hover {
+    text-decoration: underline;
+}
+
+.messages {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+    color: red;
+}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <title>Register Company</title>
+</head>
+<body>
+    <h2>Register Company</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Register Company</button>
+    </form>
+
+    <h2>Choose Existing Company</h2>
+    <form method="get">
+        <input type="text" placeholder="Search for companies" name="search">
+        <select name="company">
+            {% for company in companies %}
+                <option value="{{ company.id }}">{{ company.name }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Choose Company</button>
+    </form>
+</body>
+</html>

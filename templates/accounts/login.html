@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/common.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/fonts.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+    <meta name="csrf-token" content="{{ csrf_token }}">
+    <title>Login</title>
+</head>
+<body class="flex-column">
+    <section class="untitled-page loginSection">
+        <div class="formGroup">
+            <div class="rectBox"></div>
+            <div class="textBox_box">
+                <span class="textBox">
+                    <span class="textBox_span0">Don’t have an account?</span>
+                    <span class="textBox_span1"> </span>
+                    <span class="textBox_span2"><a href="{% url 'register' %}">Create an Account</a></span>
+                </span>
+            </div>
+            <img class="accountImage" src="{% static 'images/logo DriversEye.svg' %}" alt="DriversEye Logo">
+            <div class="flex_row">
+                <img class="flagImage" src="{% static 'images/World_icon.svg' %}" alt="Flag">
+                <p class="languageHighlight">EN</p>
+                <img class="infoImage" src="{% static 'images/Dropdown_icon.svg' %}" alt="Info">
+            </div>
+            <div class="loginFormContainer">
+                <h1 class="pageTitle">Log in to your account</h1>
+                <form id="loginForm">
+                    {% csrf_token %}
+                    <div class="emailLabel">Email or Username</div>
+                    <div class="emailInputGroup">
+                        <input type="text" name="username" id="username" class="emailInput" placeholder="Enter your email address" required>
+                    </div>
+                    <div class="passwordLabel">Password</div>
+                    <div class="passwordInputGroup">
+                        <input type="password" name="password" id="password" class="passwordInput" placeholder="Enter your password" required>
+                    </div>
+                    <a href="{% url 'forgot_password' %}" class="forgotPasswordLink">Forgot Password?</a>
+                    <button type="button" class="loginButton" onclick="validateForm()">Log In</button>
+                </form>
+                <ul class="messages" id="errorMessages" style="display:none;"></ul>
+                <div class="textBox_box">
+                    <span class="textBox">
+                        <span class="textBox_span0">Don’t have an account?</span>
+                        <span class="textBox_span1"> </span>
+                        <span class="textBox_span2"><a href="{% url 'register' %}">Create an Account</a></span>
+                    </span>
+                </div>
+            </div>
+            <img class="backgroundImage" src="{% static 'images/Right section.svg' %}" alt="Background">
+        </div>
+    </section>
+
+    <script>
+        function validateForm() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const errorMessages = document.getElementById('errorMessages');
+            errorMessages.style.display = 'none';
+            errorMessages.innerHTML = '';
+
+            fetch('{% url "login" %}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                body: JSON.stringify({
+                    username: username,
+                    password: password
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    errorMessages.style.display = 'block';
+                    errorMessages.innerHTML = `<li class="error">${data.error}</li>`;
+                } else {
+                    window.location.href = '{% url "dashboard" %}';
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{% extends 'base_generic.html' %}
+
+
+{% block content %}
+  <h1>Driver Profile</h1>
+  <a href="{% url 'edit_driver' driver.pk %}">Edit</a> <a href="{% url 'delete_driver' driver.pk %}">Delete</a>
+  <p>Name: {{ driver.name }} </p>
+  <p>License Number: {{ driver.license_number }} </p>
+  <p>License Expiry Date: {{ driver.license_expiry_date }} </p>
+  <p>Phone Number: {{ driver.phone_number }} </p>
+  <p>Driver Score: {{ driver.driver_score }}</p>
+  <p>Fuel Usage: {{ driver.fuel_usage }}</p>
+  <p>Last Position: {{ driver.last_position }}</p>
+  <p>Latest Violation: {{ driver.latest_violation }}</p>
+  <p>Last Trip: {{ driver.last_trip }}</p>
+  <p>Miles Driven: {{ driver.miles_driven }}</p>
+  <a href="{% url 'dashboard' %}">Back to Dashboard</a>
+{% endblock %}
